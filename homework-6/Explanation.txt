@@ -1,0 +1,59 @@
+Nim game 
+Game class
+- In the game class I first constructed all the instance variables and random generator 
+- in the game class constructor, computerPlayer takes in the difficulty level from the play method 
+- if the player enter 2 for difficulty， the computerPlayer takes that value and assigns that into mode variable in the computer class
+--> int firstPlayer stores a value randomly generated with param 2 so either 1 or 0
+---> The according statements are printed out with the if statement
+--> The while loop: as long as there are still marbles in the pile, the game continues
+---> if computer play first, move method is invoked on computerplayer and the amount removed is subtracted from the pile
+---> firstplayer is added 1 to invoke the else if statement which let the human play 
+---> after human firstplayer is subtracted 1 to redirect to computer 
+---> loop continues as long as there is still marbles left 
+--> The last statement says if the loop ended with human making the last move then computer wins, vise versa
+
+Computer class
+  -> in the computer class, if mode is 2 then computer plays smart and takes what ever it needs to make the 
+  pile size power of 2 minus 1 unless it is already power 2 minus 1 then the computer takes a random value that 
+  is maximum half of the current size of the pile. If the marbles left is less or equals to 3 then computer only takes 1
+
+- if the player enter 1 for difficulty， the computerPlayer takes that value and assigns that into mode variable in the computer class
+  -> the computer take away an integer amount generated randomly through random generator that is maximum half of the marble pile
+  --> the parameter for r.nextInt is half of the marbleleft, since the Math random method is exclusive of the parameter, I added 1 to include half of the pile 
+      as a possible selection
+  --> the if statement when marblesLeft is less than 3 then the computer always remove 1 to avoids out of bound error 
+
+Human class
+- Human constructor does not take any input
+- move method in human have a Scanner that takes in the users input
+- the instruction printed of how many human can take (max) is based on how many marbles are in the pile
+--> if marbles left is 1 then maximum is 1 instead of half
+
+  Zipcode 
+  I first overloaded the constructor base on what parmeter they take in. a string would assign a value into bar 
+  a integer would assign a value into the zip 
+  getBarcode
+  - first convert the integer zipcode into a string, check if the length of string is 5 digit or not with the .length() method
+  - getCheck method takes in a zip integer and calculated the checkdigit
+  - checkdigit is then coverted into a string and added to zipString
+  - for loop: for each char of zipString the corresponding barcode is added to zipString2 
+  - zipString2 is returned in between 2 framebars
+getZIPcode
+  - starting from the second digit(index 1) we take in every 5 char form the barcode from the substring method
+  - each 5 char is assigned into a bar with the substring method 
+  - check if the the bar input have frame bar with if statement taking the first char of substring and last char 
+  -- if either the beginning or end of the Barcode input is not a frame bar then print error message 
+
+  - put all the bars into an array and iterated through the array with a for loop
+    -> using the .equals method to compare to bar to the template and assign them to
+    the corresponding integer 
+- Checkdigit for barcode
+--Zipstring2 takes the 5 char of zipString and is converted into a integer
+-- getcheck method finds the sum of each individual number in a integer value, the zipcode integer z, % the sum by 10 
+    and subtracted the remainder obtained from % from 10 to get the check digit   
+--- the checkdigit converted from barcode is obtained from getting the last char of zipString
+---  checkDigit from barcode is compared with checkDigit calculated, if they are the same the value of check digit is printed
+    otherwise print error message 
+One issue I encountered is that since the getZip method has to return the string barcode in the end, the error message
+would be printed before, in between the "The corresponding zipcode: " and the zipcode itself. A toString method can potentially 
+make it more clear but was not sure if it was necessary  
